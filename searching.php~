@@ -1,0 +1,94 @@
+<?php
+session_start();
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+	body{
+		background-color: #B8B894;
+		margin-left: 250px;
+		margin-top: 70px;
+		margin-right: 250px;	
+	}
+	</style>
+</head>
+<body>
+
+<?php
+if($_SESSION["Username"]=="Guest"){
+  echo '<div><a href="login.htm">Login</a>
+  <a href="signup.php">Sign Up</a></div>';
+}
+else{
+  echo '<a href="logout.php">Log Out</a>';
+}
+?>
+<br>
+<center>
+<form action="searching.php" method="post">
+	Search Videos :
+	<input type="text" name="search">
+	
+	<input type="submit" value="GO">
+</form>
+<br>
+<br>
+</center>
+
+<?php
+
+$s=$_POST["search"];
+$conn=new mysqli("localhost","root","admin","Video");
+
+$sql="(SELECT * FROM Latex WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM C WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM GIMP WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM Introduction_to_Algorithms WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM Java WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM PHP WHERE Name LIKE '%$s%')
+	UNION 
+	(SELECT * FROM Python WHERE Name LIKE '%$s%')";
+$result=$conn->query($sql);
+
+if ($result->num_rows > 0)
+{
+    while($row = $result->fetch_assoc())
+    {
+	echo '
+		<a href="display.php?data='.$row["ID"].'">
+			<img src="'.$row["Img"].'" alt="Video" style="width:120px;height:90px;border:0">
+  			'.$row["Name"]."<br>".'
+  		
+		</a>';
+    }
+}
+
+$page_count=1;
+$row_count=$result->num_rows;
+$items_per_page=4;
+if($row_count>$items_per_page){
+	$page_count=$row_count/$items_per_page+1;
+}
+$page=1;
+for ($i = 1; $i <= $page_count; $i++) {
+   if ($i == $page) { // this is current page
+       echo 'Page ' . $i . '<br>';
+   } else { // show link to other page   
+       echo '<a href="menuitem.php?page=' . $i . '&search='.$s.'">Page ' . $i . '</a><br>';
+   }
+}
+						
+?>
+
+
+</body>
+</html>
+

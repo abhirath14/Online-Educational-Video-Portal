@@ -1,0 +1,41 @@
+	<?php
+	session_start();
+	$servername="localhost";
+	$username="root";
+	$password="admin";
+	$conn=new mysqli($servername, $username, $password);
+	$sql="CREATE DATABASE Forum";
+	$conn->query($sql);
+	$conn=new mysqli($servername, $username, $password, "Forum");
+	$sql="CREATE TABLE Users(
+	ID INT(7) 	NOT NULL PRIMARY KEY,
+	user VARCHAR(60) NOT NULL
+	)";
+	$conn->query($sql);
+	
+	$conn=new mysqli($servername, $username, $password, "Forum");
+	$sql="CREATE TABLE Questions(
+	ID INT(7) 	NOT NULL PRIMARY KEY,
+	q VARCHAR(60) NOT NULL
+	)";
+	$conn->query($sql);
+	
+	$conn=new mysqli($servername, $username, $password, "Forum");
+	$sql="CREATE TABLE Answers(
+	ID INT(7) 	NOT NULL PRIMARY KEY,
+	IDQ INT(7)  NOT NULL,
+	IDU INT(7)	NOT NULL, 
+	ans VARCHAR(60) NOT NULL
+	)";
+	$conn->query($sql);
+	$conn=new mysqli($servername, $username, $password, "Forum");
+	$sql="INSERT INTO Questions(ID, q)
+	VALUES ('1','W')";
+	$conn->query($sql);
+	
+	$conn=new mysqli($servername, $username, $password, "Forum");
+	$sql="INSERT INTO Answers(ID, IDQ, IDU, ans)
+	VALUES ('1','W',4,5)";
+	$conn->query($sql);
+	
+?>

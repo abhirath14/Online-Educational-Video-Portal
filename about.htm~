@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>About</title>
+	<style>
+	</style>
+</head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="Project/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<style>
+	.center
+	{
+		margin-left: auto;
+		margin-right: auto;
+		width=70%;
+	}
+	body
+	{
+		background-color: #b0c4de;
+		background-image: url("child.jpg");
+	}
+	div
+	{
+		background-color: #b0c4de;
+		width: 600px;
+    	padding: 25px;
+    	border: 25px solid navy;
+    	margin: 20px;
+    	font-size: 25px;
+	}
+</style>
+<body>
+<p align="center"><font size="7"><b>ABOUT US</b></font></p><br><br><br>
+<div class="center">
+This website is an academic project submitted as an assignment of the course Software Systems Laboratory. This website caters to the need of students who wish to find educational resources on the internet like books and lectures.Although, we have added only videos tutorials of C, Java, Python, GIMP, PHP, Introduction to Algorithms. We have included options like signing in only for some restricted users ,searching the videos, commenting on the videos for some restricted users, and option of like. Very soon we will come up with a question and answer forum also.
+</div>
+</body>
+</html>

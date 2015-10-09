@@ -1,0 +1,10 @@
+<?php
+	session_start();
+	$servername="localhost";
+	$username="root";
+	$password="admin";
+	$conn=new mysqli($servername,$username,$password,"Forum");
+	$sql="INSERT INTO Questions(ID, q)
+	VALUES('1','How to be happy?')";
+	$conn->query($sql);
+?>

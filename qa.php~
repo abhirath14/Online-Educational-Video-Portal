@@ -1,0 +1,11 @@
+<?php
+	session_start();
+	if($_SESSION['Username']!="Guest")
+	{
+	//	header('Location: login3.html');
+	}
+	else
+	{
+		header('Location: login3.html');
+	}
+?>
